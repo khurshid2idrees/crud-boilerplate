@@ -3,25 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function Register() {
-  const [username, setUsername] = useState();
-  const [email, setemail] = useState();
-  const [password, setPassword] = useState();
-
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    axios
-      .post("http://localhost:5000/register", { username, email, password })
-      .then((res) => {
-        console.log(res.data,'kd samosa')
-        if (res.data === "success") {
-          navigate("/login");
-        }
-      })
-      .catch((err) => console.log(err));
-  };
+ 
 
   return (
     <>
@@ -38,7 +20,7 @@ export default function Register() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6" >
             <div>
               <label
                 htmlFor="name"
@@ -51,7 +33,6 @@ export default function Register() {
                   id="name"
                   name="name"
                   type="text"
-                  onChange={(e) => setUsername(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -69,7 +50,6 @@ export default function Register() {
                   id="email"
                   name="email"
                   type="email"
-                  onChange={(e) => setemail(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -90,7 +70,6 @@ export default function Register() {
                   id="password"
                   name="password"
                   type="password"
-                  onChange={(e) => setPassword(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
